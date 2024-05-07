@@ -1,0 +1,12 @@
+---
+
+- name: restart sssd
+  ansible.builtin.service:
+    enabled: "{{ sssd_service_enabled | default('yes') }}"
+    name: sssd
+    state: "{{ sssd_service_state | default('restarted') }}"
+
+- name: restart ssh
+  ansible.builtin.service: 
+    name: ssh
+    state: restarted
